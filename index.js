@@ -1,7 +1,6 @@
 import inquirer from './node_modules/inquirer/lib/inquirer.js';
 import fs from 'fs'
 
-
 // Array of question objects to be passed to inquirer
 const questions = [
   {
