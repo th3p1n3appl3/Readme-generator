@@ -1,10 +1,8 @@
 import inquirer from './node_modules/inquirer/lib/inquirer.js';
-// import fs from './node_modules/fs/lib/fs.js';
 import fs from 'fs'
-// var path = require('path');
 
-console.log('Hi, this is a ');
 
+// Array of question objects to be passed to inquirer
 const questions = [
   {
     type: 'input',
@@ -62,10 +60,12 @@ const questions = [
   },
 ];
 
+// Function to parse the answers from inquirer
 function parseAnswer (answers) {
   let keys = Object.keys(answers);
   let result = '';
 
+  // iterate through the keys and build the markdown
   for (let i = 0; i < keys.length; i++) {
     let key = keys[i];
     let value = answers[key];
@@ -79,8 +79,12 @@ function parseAnswer (answers) {
     }
 
     if (key === 'table of contents') {
-      result += "## Table of Contents\n" + keys.map((index) => {
-        return `* [${index}](#${index})\n`;
+      result += "## Table of Contents\n" + keys.map((value, index) => {
+        // exclude the first three keys because object.keys is deterministic
+        if (index < 3) {
+          return "";
+        }
+        return `* [${value}](#${value})\n`;
       }
     ).toString().replace(/,/g, '');
     result += "\n\n";;
@@ -94,7 +98,7 @@ function parseAnswer (answers) {
     }
 
     if (key === 'license') {
-      result += `## License\n${value}\n\n`;
+      result += `## License\n The following license was used:${value}\n\n`;
     }
 
     if (key === 'contributing') {
@@ -113,6 +117,7 @@ function parseAnswer (answers) {
   return result;
 }
 
+// Create actual readme file
 function saveToDisk (data) {
   fs.writeFile('README.md', data, function (err) {
     if (err) throw err;
@@ -120,6 +125,7 @@ function saveToDisk (data) {
   });
 }
 
+// Call inquirer and pass the questions
 inquirer.prompt(questions).then((answers) => {
   saveToDisk(parseAnswer(answers));
 });

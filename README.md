@@ -4,9 +4,6 @@
 This is a repository.
 
 ## Table of Contents
-* [title](#title)
-* [description](#description)
-* [table of contents](#table of contents)
 * [installation](#installation)
 * [usage](#usage)
 * [license](#license)
