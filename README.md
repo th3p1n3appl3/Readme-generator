@@ -1,7 +1,7 @@
-# My-Repository
+# Readme-generator
 
 ## Description
-This is a repository.
+This repository will prompt you with several questions to help you write a professional readme.
 
 ## Table of Contents
 * [installation](#installation)
@@ -13,20 +13,20 @@ This is a repository.
 
 
 ## Installation
-This is how you install it.
+npm install
 
 ## Usage
-This is how you use it.
+Download and then run node index.js in your console.
 
 ## License
-MIT
+ The following license was used:MIT
 
 ## Contributing
-This is how you can contribute.
+Submit a pull request.
 
 ## Tests
-This is how it has been tested.
+No test automation implemented.
 
 ## Questions
-This is who you contact.
+Open an issue.
 
